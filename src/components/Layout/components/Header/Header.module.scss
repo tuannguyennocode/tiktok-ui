@@ -1,8 +1,12 @@
-.wrapper {
+.container {
+    width: 100%;
     --search-border-radius: 92px;
     --search-btn-width: 52px;
     height: var(--default-layout-header-height, 60px);
     box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
+}
+.wrapper {
+    height: 100%;
     display: flex;
     justify-content: center;
 }
@@ -21,6 +25,11 @@
     }
     height: 42px;
 }
+
+.search,
+.search-result {
+    width: 361px;
+}
 .search {
     &:focus-within {
         border-color: #cecfd2;
@@ -29,7 +38,6 @@
     position: relative;
     background-color: rgba(22, 24, 35, 0.06);
     height: 46px;
-    width: 361px;
     display: flex;
     align-items: center;
     border-radius: var(--search-border-radius);
@@ -47,6 +55,12 @@
     width: 252px;
     background-color: transparent;
     padding: 20px 0;
+}
+.search-title {
+    font-weight: 600;
+    font-size: 1.4rem;
+    color: rgba(22, 24, 35, 0.5);
+    padding: 0px 12px 5px;
 }
 .clear:hover {
     cursor: pointer;
@@ -74,7 +88,7 @@
         width: 24px;
         color: #a6a7ab;
     }
-   
+
     border-top-right-radius: var(--search-border-radius);
     border-bottom-right-radius: var(--search-border-radius);
     display: flex;
@@ -98,25 +112,6 @@
     align-items: center;
 }
 
-.upload {
-    &:hover {
-        background-color: rgba(22, 24, 35, 0.03);
-        cursor: pointer;
-    }
-    font {
-        margin-left: 8px;
-    }
-    font-family: var(--default-font-family);
-    line-height: 24px;
-    font-weight: 600;
-    font-size: 1.6rem;
-    border: 1px solid rgba(22, 24, 35, 0.12);
-    border-radius: 2px;
-    background-color: #fff;
-    width: 114px;
-    height: 36px;
-}
-
 .login {
     &:hover {
         background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)), #fe2c55;
@@ -127,7 +122,7 @@
     background-color: var(--primary);
     color: #fff;
     line-height: 24px;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 1.6rem;
     border: 1px solid rgba(22, 24, 35, 0.12);
     border-radius: 4px;
@@ -138,7 +133,44 @@
     &:hover {
         cursor: pointer;
     }
+    padding: 0 4px;
     margin-left: 16px;
     width: 20px;
     height: 20px;
+}
+.custom-move-up-button {
+    position: relative;
+    color: #fff;
+    font-size: 2rem;
+    background-color: var(--primary);
+    flex-direction: column;
+    justify-content: end;
+    padding: 2px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
+    &:hover {
+        background-color: #ef2a50;
+    }
+    div {
+        top: 11px;
+        border-radius: 2px;
+        position: absolute;
+        width: 13px;
+        height: 1.4px;
+        background-color: #fff;
+    }
+}
+.custom-get-app-button {
+    box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
+    width: max-content;
+    line-height: 30px;
+    height: 32px;
+    font-size: 1.4rem;
+    color: rgba(22, 24, 35, 0.75);
+    padding: 8px;
+    background-color: #fff;
+    border: 1px solid rgba(22, 24, 35, 0.12);
+    &:hover {
+        border-color: rgba(22, 24, 35, 0.2);
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),#fff;
+    }
 }

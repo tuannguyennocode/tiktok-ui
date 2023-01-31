@@ -3,3 +3,6 @@
 3. Install & config Prettier
 4. Install & config CSS/SASS
 5. Config Router & Layout
+
+Library:
+- Tippyjs-react: npm i @tippyjs/react
