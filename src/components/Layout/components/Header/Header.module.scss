@@ -129,15 +129,18 @@
     width: 100px;
     height: 36px;
 }
-.menu {
+.menu-btn {
     &:hover {
         cursor: pointer;
     }
     padding: 0 4px;
     margin-left: 16px;
+    font-size: 2rem;
     width: 20px;
     height: 20px;
+    background-color: transparent;
 }
+
 .custom-move-up-button {
     position: relative;
     color: #fff;
@@ -171,6 +174,6 @@
     border: 1px solid rgba(22, 24, 35, 0.12);
     &:hover {
         border-color: rgba(22, 24, 35, 0.2);
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),#fff;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), #fff;
     }
 }

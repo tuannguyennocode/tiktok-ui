@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCircleXmark,
-    faSpinner,
     faMagnifyingGlass,
     faPlus,
     faEllipsisVertical,
-    faCaretUp,
+    faLanguage,
+    faCircleQuestion,
+    faKeyboard,
+    faMoon,
 } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css'; // optional
@@ -17,14 +19,36 @@ import styles from './Header.module.scss';
 import images from '~/assets/images';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
-
+import Menu from '~/components/Popper/Menu';
+import Toggle from '~/components/Toggle';
 const cx = classNames.bind(styles);
+
+const MENU_ITEMS = [
+    {
+        icon: <FontAwesomeIcon icon={faLanguage} />,
+        title: 'English',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        title: 'Feedback and help',
+        to: '/feedback',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        title: 'Keyboard Shortcuts',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faMoon} />,
+        title: 'Dark Mode',
+        toggle: <Toggle />,
+    },
+];
 
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
     useEffect(() => {
         setTimeout(() => {
-            setSearchResult([]);
+            setSearchResult([1, 2, 3]);
         }, 0);
     }, []);
     return (
@@ -70,14 +94,17 @@ function Header() {
                         </Tippy>
                     </div>
                     <div className={cx('action')}>
-                        <Button medium>
-                            <FontAwesomeIcon icon={faPlus} />
+                        <Button medium leftIcon=<FontAwesomeIcon icon={faPlus} />>
                             <font>Upload</font>
                         </Button>
                         <Button primary>
-                          <font>Login</font>
+                            <font>Log in</font>
                         </Button>
-                        <FontAwesomeIcon className={cx('menu')} icon={faEllipsisVertical} />
+                        <Menu items={MENU_ITEMS}>
+                            <button className={cx('menu-btn')}>
+                                <FontAwesomeIcon icon={faEllipsisVertical} />
+                            </button>
+                        </Menu>
                     </div>
                 </div>
             </div>
