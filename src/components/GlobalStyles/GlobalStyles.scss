@@ -4,10 +4,13 @@
 :root {
     --primary: #fe2c55;
     --black: #000;
-    --text-color:#333;
+    --text-color: #333;
     //Default layout
     --default-layout-width: 1150px;
     --default-layout-header-height: 60px;
+    --default-layout-horizontal-spacer-right: 24px;
+    --default-layout-horizontal-spacer-left: 20px;
+    --default-square-edge: 32px;
     --default-font-family: 'IBM Plex Sans', sans-serif;
 }
 
@@ -27,11 +30,32 @@ body {
     text-rendering: optimizeSpeed;
     color: var(--text-color);
 }
-button, input, [tabindex] {
+button,
+input,
+[tabindex] {
     outline: none;
     border: none;
 }
 a[href] {
     text-decoration: none;
     color: var(--text-color);
+}
+body {
+    .tippy-box {
+        background-color: rgba(84, 84, 84, 0.92);
+        font-weight: 600;
+        font-size: 1.6rem;
+        line-height: 2.2rem;
+        border-radius: 8px;
+        padding: 8px;
+    }
+    .tippy-content {
+        padding: 0;
+    }
+    .tippy-arrow {
+        color: rgba(84, 84, 84, 0.92);
+    }
+    .tippy-box[data-placement^='bottom'] > .tippy-arrow:before {
+        top: -8px;
+    }
 }

@@ -26,6 +26,7 @@ function Button({
         onClick,
         ...passProps,
     };
+
     if (disabled) {
         Object.keys(props).forEach((key) => {
             if (key.startsWith('on') && typeof props[key] === 'function') {
@@ -49,6 +50,7 @@ function Button({
         disabled,
         rounded,
         circle,
+        // Lý do nhận className https://www.pluralsight.com/guides/applying-classes-conditionally-react
     });
     return (
         <Comp className={classes} {...props}>
