@@ -43,11 +43,11 @@
     }
     color: #fff;
     width: 100px;
-    background-color: var(--primary);
+    background-color: var(--primary-color);
     border: none;
 }
 .outline {
-    color: var(--primary);
+    color: var(--primary-color);
     border-color: currentColor;
     &:hover {
         background-color: rgba(254, 44, 85, 0.06);

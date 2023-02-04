@@ -1,16 +1,11 @@
-import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-    faCircleXmark,
-    faMagnifyingGlass,
     faPlus,
     faEllipsisVertical,
     faLanguage,
     faCircleQuestion,
     faKeyboard,
     faMoon,
-    faCloudUpload,
-    faMessage,
     faUser,
     faChartLine,
     faVideo,
@@ -18,18 +13,17 @@ import {
     faSignOut,
 } from '@fortawesome/free-solid-svg-icons';
 import { faBitcoin } from '@fortawesome/free-brands-svg-icons';
-import HeadlessTippy from '@tippyjs/react';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
 import classNames from 'classnames/bind';
-
 import Button from '~/components/Button';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
-import { Wrapper as PopperWrapper } from '~/components/Popper';
-import AccountItem from '~/components/AccountItem';
 import Menu from '~/components/Popper/Menu';
 import Toggle from '~/components/Toggle';
+import { MailboxIcon, MessageIcon } from '~/components/Icon';
+import Image from '~/components/Image';
+import Search from '../Search';
 const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [
@@ -69,7 +63,6 @@ const MENU_ITEMS = [
 ];
 
 function Header() {
-    const [searchResult, setSearchResult] = useState([]);
     const currentUser = true;
 
     const userMenu = [
@@ -107,12 +100,6 @@ function Header() {
         },
     ];
 
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([1, 2, 3]);
-        }, 0);
-    }, []);
-
     const handleMenuChange = (item) => {};
 
     return (
@@ -122,60 +109,28 @@ function Header() {
                     <div className={cx('logo')}>
                         <img src={images.logo} alt="Tiktok" />
                     </div>
-                    <div>
-                        <HeadlessTippy
-                            interactive
-                            visible={searchResult.length > 0}
-                            render={(attrs) => (
-                                <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                                    <PopperWrapper>
-                                        <h4 className={cx('search-title')}>Account</h4>
-                                        <AccountItem name="theanh28entertainment" />
-                                        <AccountItem name="theanh28entertainment" />
-                                        <AccountItem name="theanh28entertainment" />
-                                        <AccountItem name="theanh28entertainment" />
-                                    </PopperWrapper>
-                                </div>
-                            )}
-                        >
-                            <div className={cx('search')}>
-                                <input
-                                    className={cx('search-input')}
-                                    placeholder="Search accounts and videos"
-                                    spellCheck={false}
-                                />
-                                <button className={cx('clear')}>
-                                    <FontAwesomeIcon icon={faCircleXmark} />
-                                </button>
-                                {/* <FontAwesomeIcon className={cx('loading')} icon={faSpinner} /> */}
-
-                                <div className={cx('splitter')}></div>
-
-                                <button className={cx('search-btn')}>
-                                    <FontAwesomeIcon icon={faMagnifyingGlass} />
-                                </button>
-                            </div>
-                        </HeadlessTippy>
-                    </div>
+                    <Search/>
                     <div className={cx('action')}>
+                        <Button medium leftIcon=<FontAwesomeIcon icon={faPlus} />>
+                            <font>Upload</font>
+                        </Button>
                         {currentUser ? (
                             <div className={cx('current-user')}>
-                                <Tippy delay={[0, 200]} content="Upload video" placement="bottom">
-                                    <button className={cx('action-btn')}>
-                                        <FontAwesomeIcon icon={faCloudUpload} />
+                                <Tippy delay={[0, 200]} content="Message" placement="bottom">
+                                    <button className={cx('action-btn', 'message')}>
+                                        <MessageIcon width="2.6rem" height="2.6rem" className={cx('message-icon')} />
+                                        <div className={cx('notification')}>1</div>
                                     </button>
                                 </Tippy>
-                                <Tippy content="Message" placement="bottom">
+                                <Tippy delay={[0, 200]} content="Mailbox" placement="bottom">
                                     <button className={cx('action-btn')}>
-                                        <FontAwesomeIcon icon={faMessage} />
+                                        <MailboxIcon className={cx('mailbox-icon')} />
+                                        <div className={cx('notification')}>2</div>
                                     </button>
                                 </Tippy>
                             </div>
                         ) : (
                             <>
-                                <Button medium leftIcon=<FontAwesomeIcon icon={faPlus} />>
-                                    <font>Upload</font>
-                                </Button>
                                 <Button primary>
                                     <font>Log in</font>
                                 </Button>
@@ -183,10 +138,11 @@ function Header() {
                         )}
                         <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                             {currentUser ? (
-                                <img
+                                <Image
                                     className={cx('user-avatar')}
                                     alt="Nguyen Van A"
                                     src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/0ba6c8ba9eed06771b9ab7bfb5df5389~c5_100x100.jpeg?x-expires=1675515600&x-signature=NvMQWhyr6vlBiklTInEkfPBEfw0%3D"
+                                    //fallBack = "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/f90cc529e5bacc99b1459a81ab73ca87~c5_100x100.jpeg?x-expires=1675587600&x-signature=w3vmuRXEmeiVsped%2FAhGKAqYS90%3D"
                                 />
                             ) : (
                                 <button className={cx('menu-btn')}>

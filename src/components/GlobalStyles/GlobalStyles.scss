@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,500,600,700&display=swap&subset=vietnamese');
 
 :root {
-    --primary: #fe2c55;
+    --primary-color: #fe2c55;
     --black: #000;
     --text-color: #333;
     //Default layout
@@ -24,8 +24,9 @@ html {
     font-size: 62.5%;
 }
 body {
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: var(--default-font-family);
     font-size: 1.6rem;
+    font-weight: 600;
     line-height: 1.5;
     text-rendering: optimizeSpeed;
     color: var(--text-color);
@@ -40,6 +41,19 @@ a[href] {
     text-decoration: none;
     color: var(--text-color);
 }
+// Fonts
+@font-face {
+    font-family: Proxima;
+    src: url('/assets/fonts/Proxima-Nova-Regular.woff2');
+    font-weight: 400;
+}
+@font-face {
+    font-family: Proxima;
+    src: url('/assets/fonts/ProximaNova-Semibold.woff2');
+    font-weight: 600;
+}
+// Css tippy content
+
 body {
     .tippy-box {
         background-color: rgba(84, 84, 84, 0.92);
