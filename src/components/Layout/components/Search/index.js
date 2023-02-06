@@ -10,6 +10,7 @@ import AccountItem from '~/components/AccountItem';
 import { SearchIcon } from '~/components/Icon';
 import styles from './Search.module.scss';
 import { useDebounce } from '~/components/hooks';
+
 const cx = classNames.bind(styles);
 
 function Search() {
@@ -28,13 +29,13 @@ function Search() {
             return;
         }
         setLoading(true);
-        const fetchApi =  async () => {
-            const res = await searchServices.search(debounced)
-            setSearchResult(res.data)
-            setLoading(false)
-        }
-        
-        fetchApi()
+        const fetchApi = async () => {
+            const res = await searchServices.search(debounced);
+            setSearchResult(res.data);
+            setLoading(false);
+        };
+
+        fetchApi();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [debounced]);
     const handleHideResult = () => {
@@ -42,6 +43,13 @@ function Search() {
         console.log(searchResult);
     };
 
+    const handleChange = (e) => {
+        const searchValue = e.target.value;
+        if(searchValue.startsWith(' ')){
+            return
+        }
+        setSearchValue(searchValue);
+    };
     return (
         <HeadlessTippy
             onClickOutside={handleHideResult}
@@ -65,7 +73,7 @@ function Search() {
                     className={cx('search-input')}
                     placeholder="Search accounts and videos"
                     spellCheck={false}
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    onChange={handleChange}
                     onFocus={() => {
                         setShowResult(true);
                         console.log(showResult);
@@ -87,7 +95,7 @@ function Search() {
 
                 <div className={cx('splitter')}></div>
 
-                <button className={cx('search-btn')}>
+                <button className={cx('search-btn')} onMouseDown={e => e.preventDefault()}>
                     <SearchIcon width="2.4rem" height="2.4rem" className={cx('search-icon')} />
                 </button>
             </div>

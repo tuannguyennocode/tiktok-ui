@@ -15,7 +15,10 @@ import {
 import { faBitcoin } from '@fortawesome/free-brands-svg-icons';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
+import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
+
+import routesConfig from '~/config/routes';
 import Button from '~/components/Button';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
@@ -107,7 +110,7 @@ function Header() {
             <div className={cx('wrapper')}>
                 <div className={cx('inner')}>
                     <div className={cx('logo')}>
-                        <img src={images.logo} alt="Tiktok" />
+                        <Link to={routesConfig.home}><img src={images.logo} alt="Tiktok" /></Link>
                     </div>
                     <Search/>
                     <div className={cx('action')}>
