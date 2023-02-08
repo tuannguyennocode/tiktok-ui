@@ -27,6 +27,7 @@ import Toggle from '~/components/Toggle';
 import { MailboxIcon, MessageIcon } from '~/components/Icon';
 import Image from '~/components/Image';
 import Search from '../Search';
+import Notification from './Notification';
 const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [
@@ -110,25 +111,27 @@ function Header() {
             <div className={cx('wrapper')}>
                 <div className={cx('inner')}>
                     <div className={cx('logo')}>
-                        <Link to={routesConfig.home}><img src={images.logo} alt="Tiktok" /></Link>
+                        <Link to={routesConfig.home}>
+                            <img src={images.logo} alt="Tiktok" />
+                        </Link>
                     </div>
-                    <Search/>
+                    <Search />
                     <div className={cx('action')}>
                         <Button medium leftIcon=<FontAwesomeIcon icon={faPlus} />>
                             <font>Upload</font>
                         </Button>
                         {currentUser ? (
                             <div className={cx('current-user')}>
-                                <Tippy delay={[0, 200]} content="Message" placement="bottom">
+                                <Tippy delay={[0, 50]} content="Message" placement="bottom">
                                     <button className={cx('action-btn', 'message')}>
                                         <MessageIcon width="2.6rem" height="2.6rem" className={cx('message-icon')} />
-                                        <div className={cx('notification')}>1</div>
+                                        <Notification number= {1}/>
                                     </button>
                                 </Tippy>
-                                <Tippy delay={[0, 200]} content="Mailbox" placement="bottom">
+                                <Tippy delay={[0, 50]} content="Mailbox" placement="bottom">
                                     <button className={cx('action-btn')}>
                                         <MailboxIcon className={cx('mailbox-icon')} />
-                                        <div className={cx('notification')}>2</div>
+                                        <Notification number= {100}/>
                                     </button>
                                 </Tippy>
                             </div>

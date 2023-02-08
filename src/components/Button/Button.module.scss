@@ -12,7 +12,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fff;
+    background-color: var(--white);
     border: none;
     + .wrapper {
         margin-left: 16px;
@@ -41,7 +41,7 @@
     &:active {
         background: linear-gradient(0deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.12)), #fe2c55;
     }
-    color: #fff;
+    color: var(--white);
     width: 100px;
     background-color: var(--primary-color);
     border: none;
@@ -64,7 +64,7 @@
     border: 1px solid rgba(22, 24, 35, 0.12);
     font-weight: 600;
     border-radius: 2px;
-    background-color: #fff;
+    background-color: var(--white);
     width: 114px;
 }
 

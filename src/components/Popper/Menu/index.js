@@ -10,7 +10,7 @@ const cx = classNames.bind(styles);
 
 const defaultFn = () => {};
 
-function Menu({ children, items = [],hideOnClick = false, onChange = defaultFn }) {
+function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn }) {
     // Đầu tiên initstate nhận vào là 1 array chứa 1 object (trong object có 1 property key = data & value = items(MENU_ITEMS)).
     // Khi này history có giá trị của initstate
     const [history, setHistory] = useState([{ data: items }]);
@@ -39,7 +39,7 @@ function Menu({ children, items = [],hideOnClick = false, onChange = defaultFn }
     };
     return (
         <Tippy
-            hideOnClick = {hideOnClick}
+            hideOnClick={hideOnClick}
             offset={[20, 6]}
             delay={[0, 700]}
             interactive
@@ -55,7 +55,7 @@ function Menu({ children, items = [],hideOnClick = false, onChange = defaultFn }
                                 }}
                             />
                         )}
-                        {renderItems()}
+                        <div className={cx('menu-body')}>{renderItems()}</div>
                     </PopperWrapper>
                 </div>
             )}

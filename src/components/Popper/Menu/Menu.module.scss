@@ -19,6 +19,10 @@
 .menu-popper {
     padding-bottom: 8px;
 }
+.menu-body{
+    overflow: auto;
+    overflow-x: hidden;
+}
 .toggle {
     padding-left: 38px;
 }
@@ -26,6 +30,7 @@
     position: relative;
     height: 50px;
     margin-top: -8px;
+    flex-shrink: 0;
 }
 
 .back-btn {
