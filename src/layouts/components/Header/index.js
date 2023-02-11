@@ -18,7 +18,7 @@ import 'tippy.js/dist/tippy.css'; // optional
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
-import routesConfig from '~/config/routes';
+import config from '~/config';
 import Button from '~/components/Button';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
@@ -111,7 +111,7 @@ function Header() {
             <div className={cx('wrapper')}>
                 <div className={cx('inner')}>
                     <div className={cx('logo')}>
-                        <Link to={routesConfig.home}>
+                        <Link to={config.routes.home}>
                             <img src={images.logo} alt="Tiktok" />
                         </Link>
                     </div>
@@ -122,16 +122,16 @@ function Header() {
                         </Button>
                         {currentUser ? (
                             <div className={cx('current-user')}>
-                                <Tippy delay={[0, 50]} content="Message" placement="bottom">
+                                <Tippy interactive delay={[0, 50]} content="Message" placement="bottom">
                                     <button className={cx('action-btn', 'message')}>
                                         <MessageIcon width="2.6rem" height="2.6rem" className={cx('message-icon')} />
-                                        <Notification number= {1}/>
+                                        <Notification number={1} />
                                     </button>
                                 </Tippy>
                                 <Tippy delay={[0, 50]} content="Mailbox" placement="bottom">
                                     <button className={cx('action-btn')}>
                                         <MailboxIcon className={cx('mailbox-icon')} />
-                                        <Notification number= {100}/>
+                                        <Notification number={100} />
                                     </button>
                                 </Tippy>
                             </div>
