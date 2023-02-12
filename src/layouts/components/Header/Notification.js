@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-
+import PropTypes from 'prop-types'
 import styles from './Header.module.scss';
 
 const cx = classNames.bind(styles);
@@ -19,4 +19,7 @@ function Notification({ number }) {
     return <div className={classes}>{number}</div>;
 }
 
+Notification.propTypes = {
+    number: PropTypes.number
+}
 export default Notification;

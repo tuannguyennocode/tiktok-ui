@@ -69,6 +69,8 @@ const MENU_ITEMS = [
 function Header() {
     const currentUser = true;
 
+    const quantityNotification = 100;
+
     const userMenu = [
         {
             icon: <FontAwesomeIcon icon={faUser} />,
@@ -122,16 +124,16 @@ function Header() {
                         </Button>
                         {currentUser ? (
                             <div className={cx('current-user')}>
-                                <Tippy interactive delay={[0, 50]} content="Message" placement="bottom">
+                                <Tippy delay={[0, 50]} content="Message" placement="bottom">
                                     <button className={cx('action-btn', 'message')}>
                                         <MessageIcon width="2.6rem" height="2.6rem" className={cx('message-icon')} />
-                                        <Notification number={1} />
+                                        {quantityNotification > 0 ? <Notification number={quantityNotification} /> : ''}
                                     </button>
                                 </Tippy>
                                 <Tippy delay={[0, 50]} content="Mailbox" placement="bottom">
                                     <button className={cx('action-btn')}>
                                         <MailboxIcon className={cx('mailbox-icon')} />
-                                        <Notification number={100} />
+                                        {quantityNotification > 0 ? <Notification number={quantityNotification} /> : ''}
                                     </button>
                                 </Tippy>
                             </div>
