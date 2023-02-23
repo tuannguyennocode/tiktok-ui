@@ -19,25 +19,25 @@ function Search() {
     const [showResult, setShowResult] = useState(true);
     const [loading, setLoading] = useState(false);
 
-    const debounced = useDebounce(searchValue, 500);
+    const debouncedValue = useDebounce(searchValue, 500);
 
     const inputRef = useRef();
 
     useEffect(() => {
-        if (!debounced.trim()) {
+        if (!debouncedValue.trim()) {
             setSearchResult([]);
             return;
         }
         setLoading(true);
         const fetchApi = async () => {
-            const res = await searchServices.search(debounced);
+            const res = await searchServices.search(debouncedValue);
             setSearchResult(res.data);
             setLoading(false);
         };
 
         fetchApi();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [debounced]);
+    }, [debouncedValue]);
     const handleHideResult = () => {
         setShowResult(false);
     };
